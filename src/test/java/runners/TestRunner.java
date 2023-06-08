@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 @CucumberOptions(
             features = "src/main/resources/features",
-            glue = {"stepDefinations","Hooks"},
+            glue = {"stepDefinitions","Hooks"},
             //,dryRun = true,
              monochrome = true,
             tags = "@RunSmoke",
@@ -15,7 +15,7 @@ import org.openqa.selenium.WebDriver;
                     "html:target/cucumber-report/cucumber.html",
                     "json:target/cucumber-report/cucumber.json",
                     "json:target/cucumber.json",
-                    "junit:target/cukes.xml",
+                    "junit:target/cakes.xml",
                     "rerun:target/rerun.txt",
                     "rerun:target/failed_scenarios.txt"}
 

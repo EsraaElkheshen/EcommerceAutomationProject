@@ -1,27 +1,34 @@
 package stepDefinations;
-
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.BeforeAll;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import pages.Home_Page;
+import utilities.BrowserUtils;
 
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
-    public static WebDriver driver=null;
+    public static WebDriver driver;
+    public static Home_Page homepage;
 
-    @Before
-    public static void open_chrome()
-    {
+    @BeforeAll
+    public static void open_chrome(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.navigate().to("https://demo.nopcommerce.com/");
+        driver.navigate().to("https://subscribe.stctv.com/sa-en");
         driver.manage().window().maximize();
+        homepage =new Home_Page(driver);
+
     }
-    @After
-    public static void Close()  {
+
+    @AfterAll
+    public static void closeDriver(){
+        BrowserUtils.waitFor(3);
         driver.quit();
     }
+
 }
